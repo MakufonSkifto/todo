@@ -11,9 +11,7 @@ class AddItemViewController : UIViewController {
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var contentField: UITextField!
-    
-    let defaults = UserDefaults.standard
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
@@ -35,9 +33,9 @@ class AddItemViewController : UIViewController {
             
             self.present(alertController, animated: true, completion: nil)
         } else {
-            var data = defaults.object(forKey: "data") as! Array<String>
+            var data = defaults.object(forKey: todoKey) as! Array<String>
             data.append(contentField.text!)
-            defaults.set(data, forKey: "data")
+            defaults.set(data, forKey: todoKey)
             
             self.dismiss(animated: true)
         }

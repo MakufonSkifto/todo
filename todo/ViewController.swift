@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var todoTableView: UITableView!
     
-    let defaults = UserDefaults.standard
     var todoItems: Array<String> = []
     var addItemView: UIViewController = UIViewController()
     var addItemNavController: UINavigationController = UINavigationController()
@@ -29,14 +28,12 @@ class ViewController: UIViewController {
         todoTableView.dataSource = self
                 
         overrideUserInterfaceStyle = .dark
-        
-        self.navigationController!.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
-                
+                        
         // Set to empty list if there is no data
-        if defaults.object(forKey: "data") == nil {
-            defaults.set([], forKey: "data")
+        if defaults.object(forKey: todoKey) == nil {
+            defaults.set([], forKey: todoKey)
         }
-        todoItems = defaults.object(forKey: "data") as! Array<String>
+        todoItems = defaults.object(forKey: todoKey) as! Array<String>
         
         todoTableView.reloadData()
     }
@@ -74,8 +71,12 @@ extension ViewController : UITableViewDataSource {
     }
     
     @objc func labelSwipedLeft(sender: UITapGestureRecognizer) {
+        if todoItems.isEmpty {
+            return
+        }
+        
         todoItems.remove(at: sender.view!.tag)
-        defaults.set(todoItems, forKey: "data")
+        defaults.set(todoItems, forKey: todoKey)
         
         todoTableView.reloadData()
     }
@@ -84,7 +85,7 @@ extension ViewController : UITableViewDataSource {
 extension ViewController : UIViewControllerTransitioningDelegate {
     // Reload table view data on dismiss
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        self.todoItems = defaults.object(forKey: "data") as! Array<String>
+        self.todoItems = defaults.object(forKey: todoKey) as! Array<String>
         self.todoTableView.reloadData()
         return nil
     }

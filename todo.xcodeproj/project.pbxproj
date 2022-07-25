@@ -14,6 +14,7 @@
 		A525C167288D454900F6735B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A525C165288D454900F6735B /* Main.storyboard */; };
 		A525C169288D454B00F6735B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A525C168288D454B00F6735B /* Assets.xcassets */; };
 		A525C16C288D454B00F6735B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A525C16A288D454B00F6735B /* LaunchScreen.storyboard */; };
+		A56CB9CF288EDAA700ED0213 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56CB9CE288EDAA700ED0213 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A525C168288D454B00F6735B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A525C16B288D454B00F6735B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A525C16D288D454B00F6735B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A56CB9CE288EDAA700ED0213 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				A525C16A288D454B00F6735B /* LaunchScreen.storyboard */,
 				A525C16D288D454B00F6735B /* Info.plist */,
 				A523585E288D4F1F00B1D71C /* AddItemViewController.swift */,
+				A56CB9CE288EDAA700ED0213 /* Constants.swift */,
 			);
 			path = todo;
 			sourceTree = "<group>";
@@ -141,6 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A56CB9CF288EDAA700ED0213 /* Constants.swift in Sources */,
 				A525C164288D454900F6735B /* ViewController.swift in Sources */,
 				A523585F288D4F1F00B1D71C /* AddItemViewController.swift in Sources */,
 				A525C160288D454900F6735B /* AppDelegate.swift in Sources */,
