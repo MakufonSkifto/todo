@@ -10,9 +10,18 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var todoTableView: UITableView!
     
-    var todoItems: Array<String> = []
-    var addItemView: UIViewController = UIViewController()
-    var addItemNavController: UINavigationController = UINavigationController()
+    lazy var todoItems: Array<String> = {
+        if defaults.object(forKey: todoKey) == nil {
+            defaults.set([], forKey: todoKey)
+        }
+        return defaults.object(forKey: todoKey) as! Array<String>
+    }()
+    lazy var addItemView: UIViewController = {
+        return self.storyboard!.instantiateViewController(withIdentifier: "AddItemViewController")
+    }()
+    lazy var addItemNavController: UINavigationController = {
+        return UINavigationController(rootViewController: addItemView)
+    }()
     
     @IBAction func addButtonSelected(_ sender: UIBarButtonItem) {
         self.present(addItemNavController, animated: true)
@@ -20,20 +29,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        addItemView = self.storyboard!.instantiateViewController(withIdentifier: "AddItemViewController")
-        addItemNavController = UINavigationController(rootViewController: addItemView)
-        addItemNavController.transitioningDelegate = self
-        
-        todoTableView.dataSource = self
-                
+        initScreen()
+    }
+    
+    func initScreen() {
         overrideUserInterfaceStyle = .dark
-                        
-        // Set to empty list if there is no data
-        if defaults.object(forKey: todoKey) == nil {
-            defaults.set([], forKey: todoKey)
-        }
-        todoItems = defaults.object(forKey: todoKey) as! Array<String>
+        
+        addItemNavController.transitioningDelegate = self
+        todoTableView.dataSource = self
         
         todoTableView.reloadData()
     }
