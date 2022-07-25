@@ -40,31 +40,6 @@ class ViewController: UIViewController {
         
         todoTableView.reloadData()
     }
-    
-    func emptyListLabel() -> UILabel {
-        let label = UILabel(
-            frame: CGRect(x: 0, y: 0, width: 400, height: 21)
-        )
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "You don't have anything in your list!"
-        label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.bold)
-        
-        return label
-    }
-    
-    func applyLabelConstraints(label: UILabel) {
-        let margins = self.view.layoutMarginsGuide
-        NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: margins.leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: margins.trailingAnchor),
-        ])
-        
-        NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalToSystemSpacingBelow: self.view.safeAreaLayoutGuide.topAnchor, multiplier: 1.0),
-            label.bottomAnchor.constraint(equalToSystemSpacingBelow: label.bottomAnchor, multiplier: 1.0)
-        ])
-    }
 }
 
 
